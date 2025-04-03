@@ -1,9 +1,10 @@
+import Filters from "./components/Filters";
 
 function App() {
 
   return (
     <>
-
+      <Filters />
     </>
   );
 }

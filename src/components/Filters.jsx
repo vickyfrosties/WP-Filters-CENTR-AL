@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { getAllPublic, getAllTypes } from "../services/Filters.service";
+import { getAllActivities } from "../services/Activities.service";
 
 const Filters = () => {
 
   const [types, setTypes] = useState([]);
   const [publics, setPublics] = useState([]);
+  const [activities, setActivities] = useState([]);
+  const [typeSelection, setTypeSelection] = useState("");
+  const [targetSelection, setTargetSelection] = useState("");
 
   useEffect(() => {
     getAllTypes()
@@ -23,11 +27,19 @@ const Filters = () => {
       ))
 
       .catch(err => console.error("Une erreur est survenur lors du chargement du filtre public", err));
-  });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    setTypeSelection(e.target.value);
+    setTargetSelection(e.target.value);
+  };
+
+  // TODO charger les activités et activer le filtre
 
   return (
     <>
@@ -35,11 +47,11 @@ const Filters = () => {
         <label htmlFor="category-select">
           Catégorie
         </label>
-        <select name="types_filter" id="types_filters">
+        <select name="types_filter" id="types_filters" onChange={handleChange}>
           <option value="">--Choisissez un type d'activité--</option>
           {types?.length > 0 ? (
             types.map((type) => (
-              <option key={type.id} value={type.name}>
+              <option key={type.id} value={type.name} >
                 {type.name}
               </option>
             ))
@@ -53,7 +65,7 @@ const Filters = () => {
           Public
         </label>
 
-        <select name="publics_filter" id="publics_filters">
+        <select name="publics_filter" id="publics_filters" onChange={handleChange}>
           <option value="">--Choisissez un public--</option>
           {publics.length > 0 ? (
             publics.map((target) => (

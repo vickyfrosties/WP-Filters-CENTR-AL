@@ -1,20 +1,29 @@
 import { useEffect, useState } from "react";
-import { getAllTypes } from "../services/Filters.service";
+import { getAllPublic, getAllTypes } from "../services/Filters.service";
 
 const Filters = () => {
 
   const [types, setTypes] = useState([]);
+  const [publics, setPublics] = useState([]);
 
   useEffect(() => {
     getAllTypes()
-
       .then((types) => (
         setTypes(types)
       ))
 
-      .catch(err => console.error("Une erreur est survenue lors du chargement des types", err));
+      .catch(err => console.error("Une erreur est survenue lors du chargement du filtre type", err));
 
   }, []);
+
+  useEffect(() => {
+    getAllPublic()
+      .then((publics) => (
+        setPublics(publics)
+      ))
+
+      .catch(err => console.error("Une erreur est survenur lors du chargement du filtre public", err));
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,6 +52,19 @@ const Filters = () => {
         <label htmlFor="category-select">
           Public
         </label>
+
+        <select name="publics_filter" id="publics_filters">
+          <option value="">--Choisissez un public--</option>
+          {publics.length > 0 ? (
+            publics.map((target) => (
+              <option key={target.id} value={target.name}>
+                {target.name}
+              </option>
+            ))
+          ) : (
+            <option value="">Aucun filtre trouvé.</option>
+          )}
+        </select>
 
         <button type="submit">Rechercher</button>
       </form>

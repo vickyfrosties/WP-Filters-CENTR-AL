@@ -1,8 +1,23 @@
+import { useEffect, useState } from "react";
+import { getAllTypes } from "../services/Filters.service";
+
 const Filters = () => {
+
+  const [types, setTypes] = useState([]);
+
+  useEffect(() => {
+    getAllTypes()
+
+      .then((types) => (
+        setTypes(types)
+      ))
+
+      .catch(err => console.error("Une erreur est survenue lors du chargement des types", err));
+
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Bouton cliqué !");
   };
 
   return (
@@ -11,25 +26,23 @@ const Filters = () => {
         <label htmlFor="category-select">
           Catégorie
         </label>
-        <select autoFocus name="category" id="category">
-          <option value="">--Choisissez une catégorie--</option>
-          <option value="art">Arts martiaux</option>
-          <option value="dance">Danse</option>
-          <option value="others">Divers</option>
-          <option value="gym_coaching">Gymnastique & Coaching</option>
-          <option value="yoga">Yoga</option>
+        <select name="types_filter" id="types_filters">
+          <option value="">--Choisissez un type d'activité--</option>
+          {types?.length > 0 ? (
+            types.map((type) => (
+              <option key={type.id} value={type.name}>
+                {type.name}
+              </option>
+            ))
+          ) : (
+            <option disabled value="">Aucun filtre trouvé.</option>
+          )}
         </select>
+
 
         <label htmlFor="category-select">
           Public
         </label>
-        <select autoFocus name="category" id="category">
-          <option value="">--Choisissez un public--</option>
-          <option value="teen-adult">Ados adultes</option>
-          <option value="women">Dames</option>
-          <option value="kids">Enfants (7 à 13 ans)</option>
-          <option value="senior">Seniors</option>
-        </select>
 
         <button type="submit">Rechercher</button>
       </form>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllPublic, getAllTypes } from "../services/Filters.service";
+import { getAllPublic, getAllTypes } from "../../services/Filters.service";
 
 const Filters = () => {
 

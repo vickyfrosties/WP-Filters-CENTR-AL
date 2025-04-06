@@ -1,0 +1,36 @@
+.activities_container {
+  padding: 0;
+  box-sizing: border-box;
+  border: 2px solid magenta;
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+
+  .single_activity {
+    width: 16%;
+    min-height: 50vh;
+    border-radius: 20px;
+    background-color: var(--third-color);
+
+    div {
+      border-radius: 20px;
+
+      img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 18px 18px 0 0;
+      }
+    }
+
+    h3 {
+      text-align: center;
+      font-size: 24px;
+    }
+  }
+}

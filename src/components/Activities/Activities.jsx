@@ -1,5 +1,7 @@
-import { act, useEffect, useState } from "react";
-import { getAllActivities } from "../services/Activities.service";
+import { useEffect, useState } from "react";
+import { getAllActivities } from "../../services/Activities.service";
+import styles from "./Activities.module.scss";
+import Filters from "../Filters/Filters";
 
 const Activities = () => {
 
@@ -19,10 +21,12 @@ const Activities = () => {
     <>
       <h3>Activités au programme</h3>
 
-      <section>
+      <Filters />
+
+      <section className={styles.activities_container}>
         {activities?.length > 0 ? (
           activities.map((activity) => (
-            <div key={activity.id}>
+            <div key={activity.id} className={styles.single_activity}>
               <div>
                 <img src={activity.image.guid} alt={activity.image.post_title} />
               </div>

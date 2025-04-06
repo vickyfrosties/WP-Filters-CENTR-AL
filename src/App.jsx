@@ -1,11 +1,9 @@
-import Activities from "./components/Activities";
-import Filters from "./components/Filters";
+import Activities from "./components/Activities/Activities";
 
 function App() {
 
   return (
     <>
-      <Filters />
       <Activities />
     </>
   );

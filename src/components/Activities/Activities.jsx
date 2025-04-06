@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllActivities } from "../../services/Activities.service";
 import styles from "./Activities.module.scss";
-import Filters from "../Filters/Filters";
 import { filteredActivities } from "../../services/Filters.service";
 
 const Activities = ({ targetSelection, typeSelection, setTypeSelection, setTargetSelection }) => {
@@ -15,6 +14,7 @@ const Activities = ({ targetSelection, typeSelection, setTypeSelection, setTarge
         const filteredActivity = filteredActivities(activities, targetSelection, typeSelection);
         console.log("Public sélectionné :", targetSelection);
         console.log("Catégorie sélectionnée :", typeSelection);
+        setActivities(filteredActivities);
 
         setActivities(filteredActivity);
       })

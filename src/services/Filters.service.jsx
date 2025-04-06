@@ -20,9 +20,14 @@ export async function getAllPublic() {
 export function filteredActivities(activities, targetSelection, typeSelection) {
 
   return activities.filter(activity => {
-    let isPublicMatch = targetSelection === "Tous les publics" || activity.public === targetSelection;
 
-    let isCategoryMatch = typeSelection === "Toutes les catégories" || activity.categorie === typeSelection;
+    const genres = Array.isArray(activity.genre) ? activity.genre.map(g => g.name) : [];
+
+    const publics = Array.isArray(activity.publics_cibles) ? activity.publics_cibles.map(p => p.name) : [];
+
+    const isPublicMatch = targetSelection === "Tous les publics" || publics.includes(targetSelection);
+
+    const isCategoryMatch = typeSelection === "Toutes les catégories" || genres.includes(typeSelection);
 
     return isPublicMatch && isCategoryMatch;
   });

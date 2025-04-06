@@ -27,7 +27,6 @@ const Filters = ({ targetSelection, typeSelection, setTypeSelection, setTargetSe
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // onSubmitFilters(targetSelection, typeSelection);
     if (typeof onSubmitFilters === "function") {
       onSubmitFilters(targetSelection, typeSelection);
     }

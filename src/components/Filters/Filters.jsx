@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { getAllPublic, getAllTypes } from "../../services/Filters.service";
 
-const Filters = () => {
+const Filters = ({ targetSelection, typeSelection, setTypeSelection, setTargetSelection, onSubmitFilters }) => {
 
   const [types, setTypes] = useState([]);
   const [publics, setPublics] = useState([]);
-  const [typeSelection, setTypeSelection] = useState("");
-  const [targetSelection, setTargetSelection] = useState("");
 
   useEffect(() => {
     getAllTypes()
@@ -29,12 +27,19 @@ const Filters = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // onSubmitFilters(targetSelection, typeSelection);
+    if (typeof onSubmitFilters === "function") {
+      onSubmitFilters(targetSelection, typeSelection);
+    }
   };
 
   const handleChange = (e) => {
-    console.log(e.target.value);
-    setTypeSelection(e.target.value);
-    setTargetSelection(e.target.value);
+    const { name, value } = e.target;
+    if (name === "types_filter") {
+      setTypeSelection(value);
+    } else if (name === "publics_filter") {
+      setTargetSelection(value);
+    }
   };
 
   return (
@@ -43,8 +48,8 @@ const Filters = () => {
         <label htmlFor="category-select">
           Catégorie
         </label>
-        <select name="types_filter" id="types_filters" onChange={handleChange}>
-          <option value="">--Choisissez un type d'activité--</option>
+        <select name="types_filter" id="types_filters" onChange={handleChange} value={typeSelection}>
+          <option value="Toutes les catégories">Toutes les catégories</option>
           {types?.length > 0 ? (
             types.map((type) => (
               <option key={type.id} value={type.name} >
@@ -61,8 +66,8 @@ const Filters = () => {
           Public
         </label>
 
-        <select name="publics_filter" id="publics_filters" onChange={handleChange}>
-          <option value="">--Choisissez un public--</option>
+        <select name="publics_filter" id="publics_filters" onChange={handleChange} value={targetSelection}>
+          <option value="Tous les publics">Toutes les publics</option>
           {publics.length > 0 ? (
             publics.map((target) => (
               <option key={target.id} value={target.name}>

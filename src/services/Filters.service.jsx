@@ -16,3 +16,14 @@ export async function getAllPublic() {
 
   return result;
 }
+
+export function filteredActivities(activities, targetSelection, typeSelection) {
+
+  return activities.filter(activity => {
+    let isPublicMatch = targetSelection === "Tous les publics" || activity.public === targetSelection;
+
+    let isCategoryMatch = typeSelection === "Toutes les catégories" || activity.categorie === typeSelection;
+
+    return isPublicMatch && isCategoryMatch;
+  });
+};

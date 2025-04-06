@@ -2,26 +2,29 @@ import { useEffect, useState } from "react";
 import { getAllActivities } from "../../services/Activities.service";
 import styles from "./Activities.module.scss";
 import Filters from "../Filters/Filters";
+import { filteredActivities } from "../../services/Filters.service";
 
-const Activities = () => {
+const Activities = ({ targetSelection, typeSelection, setTypeSelection, setTargetSelection }) => {
 
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
     getAllActivities()
 
-      .then((activities) => (
-        setActivities(activities)
-      ))
+      .then((activities) => {
+        const filteredActivity = filteredActivities(activities, targetSelection, typeSelection);
+        console.log("Public sélectionné :", targetSelection);
+        console.log("Catégorie sélectionnée :", typeSelection);
+
+        setActivities(filteredActivity);
+      })
 
       .catch(err => console.error("Erreur est survenue lors du chargement des activités", err));
-  }, []);
+  }, [targetSelection, typeSelection]);
 
   return (
     <>
       <h3>Activités au programme</h3>
-
-      <Filters />
 
       <section className={styles.activities_container}>
         {activities?.length > 0 ? (

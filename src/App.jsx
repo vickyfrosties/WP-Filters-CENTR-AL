@@ -1,3 +1,4 @@
+import Activities from "./components/Activities";
 import Filters from "./components/Filters";
 
 function App() {
@@ -5,6 +6,7 @@ function App() {
   return (
     <>
       <Filters />
+      <Activities />
     </>
   );
 }

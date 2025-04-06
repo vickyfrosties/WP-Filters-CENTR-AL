@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { getAllPublic, getAllTypes } from "../services/Filters.service";
-import { getAllActivities } from "../services/Activities.service";
 
 const Filters = () => {
 
   const [types, setTypes] = useState([]);
   const [publics, setPublics] = useState([]);
-  const [activities, setActivities] = useState([]);
   const [typeSelection, setTypeSelection] = useState("");
   const [targetSelection, setTargetSelection] = useState("");
 
@@ -38,8 +36,6 @@ const Filters = () => {
     setTypeSelection(e.target.value);
     setTargetSelection(e.target.value);
   };
-
-  // TODO charger les activités et activer le filtre
 
   return (
     <>

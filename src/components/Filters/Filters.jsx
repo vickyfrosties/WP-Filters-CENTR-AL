@@ -27,9 +27,7 @@ const Filters = ({ targetSelection, typeSelection, setTypeSelection, setTargetSe
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (typeof onSubmitFilters === "function") {
-      onSubmitFilters(targetSelection, typeSelection);
-    }
+    onSubmitFilters(targetSelection, typeSelection);
   };
 
   const handleChange = (e) => {
@@ -66,7 +64,7 @@ const Filters = ({ targetSelection, typeSelection, setTypeSelection, setTargetSe
         </label>
 
         <select name="publics_filter" id="publics_filters" onChange={handleChange} value={targetSelection}>
-          <option value="Tous les publics">Toutes les publics</option>
+          <option value="Tous les publics">Tous les publics</option>
           {publics.length > 0 ? (
             publics.map((target) => (
               <option key={target.id} value={target.name}>

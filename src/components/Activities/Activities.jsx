@@ -25,21 +25,27 @@ const Activities = () => {
 
       <section className={styles.activities_container}>
         {activities?.length > 0 ? (
-          activities.map((activity) => (
-            <div key={activity.id} className={styles.single_activity}>
-              <div>
-                <img src={activity.image.guid} alt={activity.image.post_title} />
+          activities
+            .slice()
+            .sort((a, b) => a.title.rendered.localeCompare(b.title.rendered))
+            .map((activity) => (
+              <div key={activity.id} className={styles.single_activity}>
+                <div>
+                  <img src={activity.image.guid} alt={activity.image.post_title} />
+                </div>
+                <h3>
+                  {activity.title.rendered}
+                </h3>
+                <div className={styles.informations}>
+                  <p>
+                    {activity.description}
+                  </p>
+                  <p>
+                    {activity.contact}
+                  </p>
+                </div>
               </div>
-              <h3>
-                {activity.title.rendered}
-              </h3>
-              <div>
-                <p>
-                  {activity.description}
-                </p>
-              </div>
-            </div>
-          ))
+            ))
         ) : (
           <p>Aucune activité correspondante.</p>
         )}

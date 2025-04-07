@@ -27,8 +27,6 @@ const Activities = ({ targetSelection, typeSelection }) => {
 
   return (
     <>
-      <h3>Activités au programme</h3>
-
       <section className={styles.activities_container}>
         {activities?.length > 0 ? (
           activities
@@ -49,6 +47,7 @@ const Activities = ({ targetSelection, typeSelection }) => {
                   <p>
                     {activity.contact}
                   </p>
+                  <a href={activity.inscription}></a>
                 </div>
               </div>
             ))

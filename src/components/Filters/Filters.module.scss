@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.filter_form {
+  width: 40%;
+  display: flex;
+
+  justify-content: space-around;
+  padding: 1rem;
+
+  .category_container,
+  & .target_container {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .target_select,
+  .category_select {
+    background-color: #FFFFE2;
+  }
+
+  .submit_btn {
+    background-color: var(--secondary-color);
+    border: 0;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 7rem;
+    padding: 10px;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

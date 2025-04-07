@@ -25,9 +25,9 @@ export function filteredActivities(activities, targetSelection, typeSelection) {
 
     const publics = Array.isArray(activity.public) ? activity.public.map(p => p.name) : [];
 
-    const isCategoryMatch = typeSelection === "Toutes les catégories" || genres.includes(typeSelection);
+    const isCategoryMatch = typeSelection === "Toutes les catégories" || genres.includes(typeSelection) || typeSelection === "";
 
-    const isPublicMatch = targetSelection === "Tous les publics" || publics.includes(targetSelection);
+    const isPublicMatch = targetSelection === "Tous les publics" || publics.includes(targetSelection) || targetSelection === "";
 
     return isPublicMatch && isCategoryMatch;
   });

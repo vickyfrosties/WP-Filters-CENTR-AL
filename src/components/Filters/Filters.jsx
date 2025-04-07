@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllPublic, getAllTypes } from "../../services/Filters.service";
+import styles from "./Filters.module.scss";
 
 const Filters = ({ targetSelection, typeSelection, setTypeSelection, setTargetSelection, onSubmitFilters }) => {
 
@@ -41,42 +42,44 @@ const Filters = ({ targetSelection, typeSelection, setTypeSelection, setTargetSe
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="category-select">
-          Catégorie
-        </label>
-        <select name="types_filter" id="types_filters" onChange={handleChange} value={typeSelection}>
-          <option value="Toutes les catégories">Toutes les catégories</option>
-          {types?.length > 0 ? (
-            types.map((type) => (
-              <option key={type.id} value={type.name} >
-                {type.name}
-              </option>
-            ))
-          ) : (
-            <option disabled value="">Aucun filtre trouvé.</option>
-          )}
-        </select>
+      <form className={styles.filter_form} onSubmit={handleSubmit}>
+        <div className={styles.category_container}>
+          <label htmlFor="category-select">
+            Catégorie :
+          </label>
+          <select className={styles.category_select} name="types_filter" id="types_filters" onChange={handleChange} value={typeSelection}>
+            <option value="Toutes les catégories">Toutes les catégories</option>
+            {types?.length > 0 ? (
+              types.map((type) => (
+                <option key={type.id} value={type.name} >
+                  {type.name}
+                </option>
+              ))
+            ) : (
+              <option disabled value="">Aucun filtre trouvé.</option>
+            )}
+          </select>
+        </div>
 
+        <div className={styles.target_container}>
+          <label htmlFor="category-select">
+            Public :
+          </label>
+          <select className={styles.target_select} name="publics_filter" id="publics_filters" onChange={handleChange} value={targetSelection}>
+            <option value="Tous les publics">Tous les publics</option>
+            {publics.length > 0 ? (
+              publics.map((target) => (
+                <option key={target.id} value={target.name}>
+                  {target.name}
+                </option>
+              ))
+            ) : (
+              <option value="">Aucun filtre trouvé.</option>
+            )}
+          </select>
+        </div>
 
-        <label htmlFor="category-select">
-          Public
-        </label>
-
-        <select name="publics_filter" id="publics_filters" onChange={handleChange} value={targetSelection}>
-          <option value="Tous les publics">Tous les publics</option>
-          {publics.length > 0 ? (
-            publics.map((target) => (
-              <option key={target.id} value={target.name}>
-                {target.name}
-              </option>
-            ))
-          ) : (
-            <option value="">Aucun filtre trouvé.</option>
-          )}
-        </select>
-
-        <button type="submit">Rechercher</button>
+        <button className={styles.submit_btn} type="submit">Rechercher</button>
       </form>
     </>
   );

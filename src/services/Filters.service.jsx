@@ -21,13 +21,13 @@ export function filteredActivities(activities, targetSelection, typeSelection) {
 
   return activities.filter(activity => {
 
-    const genres = Array.isArray(activity.genre) ? activity.genre.map(g => g.name) : [];
+    const genres = activity.genre[0]?.name;
 
-    const publics = Array.isArray(activity.publics_cibles) ? activity.publics_cibles.map(p => p.name) : [];
+    const publics = activity?.public[0]?.name;
 
-    const isPublicMatch = targetSelection === "Tous les publics" || publics.includes(targetSelection);
+    const isCategoryMatch = typeSelection === "Toutes les catégories" || genres === typeSelection;
 
-    const isCategoryMatch = typeSelection === "Toutes les catégories" || genres.includes(typeSelection);
+    const isPublicMatch = targetSelection === "Tous les publics" || publics === targetSelection;
 
     return isPublicMatch && isCategoryMatch;
   });

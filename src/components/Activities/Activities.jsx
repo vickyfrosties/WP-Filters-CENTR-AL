@@ -6,25 +6,24 @@ import { filteredActivities } from "../../services/Filters.service";
 const Activities = ({ targetSelection, typeSelection }) => {
 
   const [activities, setActivities] = useState([]);
-  const [filteredActivitiesList, setFilteredActivitiesList] = useState([]);
+  const [allActivities, setAllActivities] = useState([]);
 
   useEffect(() => {
     getAllActivities()
+
       .then((activities) => {
-        const filteredActivity = filteredActivities(activities, targetSelection, typeSelection);
-        setFilteredActivitiesList(filteredActivities(activities, targetSelection, typeSelection));
-
-        console.log("Public sélectionné :", targetSelection);
-        console.log("Catégorie sélectionnée :", typeSelection);
-
-        setActivities(filteredActivity);
+        setAllActivities(activities);
+        setActivities(activities);
       })
+
       .catch(err => console.error("Erreur est survenue lors du chargement des activités", err));
-  }, [targetSelection, typeSelection]);
+  }, []);
 
   useEffect(() => {
-    setFilteredActivitiesList(filteredActivities(activities, targetSelection, typeSelection));
-  }, [targetSelection, typeSelection, activities]);
+
+    const filtered = filteredActivities(allActivities, targetSelection, typeSelection);
+    setActivities(filtered);
+  }, [targetSelection, typeSelection, allActivities]);
 
   return (
     <>

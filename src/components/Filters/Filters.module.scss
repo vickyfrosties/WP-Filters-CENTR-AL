@@ -5,7 +5,7 @@
 }
 
 .filter_form {
-  width: 40%;
+  width: 100%;
   display: flex;
 
   justify-content: space-around;
@@ -16,6 +16,10 @@
     width: 30%;
     display: flex;
     justify-content: space-between;
+
+    label {
+      width: 30%;
+    }
   }
 
   .target_select,

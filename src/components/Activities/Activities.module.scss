@@ -16,7 +16,8 @@
 
   .single_activity {
     width: 16%;
-    min-height: 50vh;
+
+    min-height: 60vh;
     border-radius: 20px;
     background-color: var(--third-color);
 
@@ -32,12 +33,39 @@
     }
 
     h3 {
+      margin-top: 1rem;
       text-align: center;
       font-size: 24px;
     }
 
     .informations {
       padding: 1rem;
+    }
+
+    .link_container {
+      width: 100%;
+      display: flex;
+      justify-content: end;
+
+      .btn_more {
+        padding: 10px;
+        margin-right: 1rem;
+        margin-top: 2rem;
+        width: 8rem;
+        background-color: var(--secondary-color);
+        border-radius: 20px;
+        color: black;
+        text-align: center;
+
+        &:hover {
+          background-color: #f0a381;
+        }
+      }
+
+      a {
+        color: black;
+        text-decoration: none;
+      }
     }
   }
 }

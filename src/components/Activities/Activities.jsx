@@ -49,6 +49,11 @@ const Activities = ({ targetSelection, typeSelection }) => {
                   </p>
                   <a href={activity.inscription}></a>
                 </div>
+                <div className={styles.link_container}>
+                  <a href={activity.link} className={styles.btn_more}>
+                    En savoir plus
+                  </a>
+                </div>
               </div>
             ))
         ) : (

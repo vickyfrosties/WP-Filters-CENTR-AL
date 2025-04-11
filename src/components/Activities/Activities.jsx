@@ -40,11 +40,18 @@ const Activities = ({ targetSelection, typeSelection }) => {
                 <h3>
                   {activity.title.rendered}
                 </h3>
+
                 <div className={styles.informations}>
+                  <div className={styles.hour_public}>
+                    <p>{activity.public[0].name} </p>
+                    <p>{activity.horaire} </p>
+                  </div>
+
                   <p>
                     {activity.description}
                   </p>
-                  <p>
+
+                  <p className={styles.contact}>
                     {activity.contact}
                   </p>
                   <a href={activity.inscription}></a>

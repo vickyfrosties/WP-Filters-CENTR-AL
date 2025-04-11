@@ -2,8 +2,12 @@
   color: var(--secondary-color);
 }
 
+* {
+  line-height: 1.5;
+}
+
 .activities_container {
-  padding: 3rem 0 4rem 0;
+  padding: 3rem 0 10rem 0;
   box-sizing: border-box;
   width: 90%;
   margin: auto;
@@ -15,11 +19,12 @@
   justify-content: center;
 
   .single_activity {
+    position: relative;
     width: 16%;
-
-    min-height: 60vh;
+    min-height: 50vh;
     border-radius: 20px;
-    background-color: var(--third-color);
+    background-color: rgba(135, 145, 255, 0.5);
+    justify-content: space-evenly;
 
     div {
       border-radius: 20px;
@@ -40,21 +45,41 @@
 
     .informations {
       padding: 1rem;
+      flex-grow: 1;
+      font-size: 18px;
+
+      .hour_public {
+        font-weight: bold;
+        border-radius: 0;
+        width: 100%;
+        margin-bottom: 1rem;
+
+        display: flex;
+        justify-content: space-between;
+        flex-grow: 1;
+      }
+
+      .contact {
+        font-weight: 600;
+        margin-top: 1.3rem;
+      }
     }
 
     .link_container {
       width: 100%;
       display: flex;
-      justify-content: end;
+      justify-content: flex-end;
 
       .btn_more {
-        padding: 10px;
-        margin-right: 1rem;
-        margin-top: 2rem;
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        padding: 7px;
         width: 8rem;
         background-color: var(--secondary-color);
         border-radius: 20px;
-        color: black;
+        color: rgb(231, 231, 231);
+        font-weight: bold;
         text-align: center;
 
         &:hover {

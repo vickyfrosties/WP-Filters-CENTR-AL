@@ -4,7 +4,7 @@ import Filters from "./components/Filters/Filters";
 
 function App() {
 
-  const [typeSelection, setTypeSelection] = useState("Toutes les types");
+  const [typeSelection, setTypeSelection] = useState("Toutes les catégories");
   const [targetSelection, setTargetSelection] = useState("Tous les publics");
 
   const [submittedType, setSubmittedType] = useState("Toutes les catégories");

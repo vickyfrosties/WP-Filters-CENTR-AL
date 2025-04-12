@@ -69,12 +69,30 @@ const Activities = ({ targetSelection, typeSelection }) => {
                   </p>
 
                   <div className={styles.links}>
-                    <a target="_blank" href={activity.site_web}>Site web</a>
-                    <a target="_blank" href={activity.facebook}>Facebook</a>
-                    <a target="_blank" href={activity.instagram}>Instagram</a>
-                    <a target="_blank" href={activity.autres_liens}>Formulaire d'inscription</a>
-                  </div>
+                    {activity.site_web && activity.site_web.trim() !== "" && (
+                      <p>
+                        Visitez le site web
+                        <a target="_blank" href={activity.site_web}> ici</a>
+                      </p>
+                    )}
 
+                    {activity.facebook && activity.facebook.trim() !== "" && (
+                      <a target="_blank" href={activity.facebook}>Page Facebook</a>
+                    )}
+
+                    {activity.instagram && activity.instagram.trim() !== "" && (
+                      <a target="_blank" href={activity.instagram}>Page Instagram</a>
+                    )}
+                    {activity.telegram && activity.telegram.trim() !== "" && (
+                      <a target="_blank" href={activity.telegram}>Lien Télégram</a>
+                    )}
+
+                    {activity.formulaire_dinscription && activity.formulaire_dinscription.trim() !== "" && (
+                      <p>Pour s'inscrire :
+                        <a target="_blank" href={activity.formulaire_dinscription}> cliquez ici</a>
+                      </p>
+                    )}
+                  </div>
 
                 </div>
                 <div className={styles.link_container}>

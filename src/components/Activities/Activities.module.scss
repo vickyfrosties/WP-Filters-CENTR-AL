@@ -6,6 +6,16 @@
   line-height: 1.5;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+
+  &a:visited {
+    text-decoration: none;
+  }
+
+}
+
 .activities_container {
   padding: 3rem 0 10rem 0;
   box-sizing: border-box;
@@ -60,7 +70,6 @@
       }
 
       .hours_container {
-        background-color: #f0a381;
         text-align: end;
         width: 60%;
       }
@@ -71,9 +80,14 @@
       }
 
       .links {
-        background-color: aquamarine;
         display: flex;
         flex-direction: column;
+        text-decoration: none;
+
+        p>a {
+          text-decoration: underline;
+          font-weight: bold;
+        }
       }
 
       .subscribe_link {

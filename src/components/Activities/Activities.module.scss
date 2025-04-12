@@ -59,9 +59,25 @@
         flex-grow: 1;
       }
 
+      .hours_container {
+        background-color: #f0a381;
+        text-align: end;
+        width: 60%;
+      }
+
       .contact {
         font-weight: 600;
         margin-top: 1.3rem;
+      }
+
+      .links {
+        background-color: aquamarine;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .subscribe_link {
+        cursor: pointer;
       }
     }
 
@@ -78,7 +94,7 @@
         width: 8rem;
         background-color: var(--secondary-color);
         border-radius: 20px;
-        color: rgb(231, 231, 231);
+        color: whitesmoke;
         font-weight: bold;
         text-align: center;
 

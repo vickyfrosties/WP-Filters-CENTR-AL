@@ -38,13 +38,20 @@ const Activities = ({ targetSelection, typeSelection }) => {
                   <img src={activity.image.guid} alt={activity.image.post_title} />
                 </div>
                 <h3>
-                  {activity.title.rendered}
+                  {activity.intitule}
                 </h3>
 
                 <div className={styles.informations}>
                   <div className={styles.hour_public}>
-                    <p>{activity.public[0].name} </p>
-                    <p>{activity.horaire} </p>
+                    <p>{activity.public_du_programme} </p>
+
+                    <div className={styles.hours_container}>
+                      <p>{activity.horaire}</p>
+                      <p>{activity.horaire_2}</p>
+                      <p>{activity.horaire_3}</p>
+                      <p>{activity.horaire_4}</p>
+                      <p>{activity.horaire_5}</p>
+                    </div>
                   </div>
 
                   <p>
@@ -52,9 +59,23 @@ const Activities = ({ targetSelection, typeSelection }) => {
                   </p>
 
                   <p className={styles.contact}>
-                    {activity.contact}
+                    {activity.nom_du_representant_contact}
                   </p>
-                  <a href={activity.inscription}></a>
+                  <p>
+                    {activity.numero_de_telephone}
+                  </p>
+                  <p>
+                    {activity.email}
+                  </p>
+
+                  <div className={styles.links}>
+                    <a target="_blank" href={activity.site_web}>Site web</a>
+                    <a target="_blank" href={activity.facebook}>Facebook</a>
+                    <a target="_blank" href={activity.instagram}>Instagram</a>
+                    <a target="_blank" href={activity.autres_liens}>Formulaire d'inscription</a>
+                  </div>
+
+
                 </div>
                 <div className={styles.link_container}>
                   <a href={activity.link} className={styles.btn_more}>

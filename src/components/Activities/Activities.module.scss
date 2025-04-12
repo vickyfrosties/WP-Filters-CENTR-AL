@@ -59,6 +59,7 @@ a {
       font-size: 18px;
 
       .hour_public {
+        margin-top: 1rem;
         font-weight: bold;
         border-radius: 0;
         width: 100%;
@@ -72,6 +73,11 @@ a {
       .hours_container {
         text-align: end;
         width: 60%;
+
+        p {
+          padding: 0;
+          margin: 0;
+        }
       }
 
       .contact {
@@ -83,6 +89,11 @@ a {
         display: flex;
         flex-direction: column;
         text-decoration: none;
+
+        p {
+          margin: 0;
+          padding: 0;
+        }
 
         p>a {
           text-decoration: underline;

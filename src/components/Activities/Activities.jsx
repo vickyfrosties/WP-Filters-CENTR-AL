@@ -58,17 +58,17 @@ const Activities = ({ targetSelection, typeSelection }) => {
                     {activity.description}
                   </p>
 
-                  <p className={styles.contact}>
-                    {activity.nom_du_representant_contact}
-                  </p>
-                  <p>
-                    {activity.numero_de_telephone}
-                  </p>
-                  <p>
-                    {activity.email}
-                  </p>
 
                   <div className={styles.links}>
+                    <p className={styles.contact}>
+                      {activity.nom_du_representant_contact}
+                    </p>
+                    <p>
+                      {activity.numero_de_telephone}
+                    </p>
+                    <p>
+                      {activity.email}
+                    </p>
                     {activity.site_web && activity.site_web.trim() !== "" && (
                       <p>
                         Visitez le site web
@@ -82,6 +82,9 @@ const Activities = ({ targetSelection, typeSelection }) => {
 
                     {activity.instagram && activity.instagram.trim() !== "" && (
                       <a target="_blank" href={activity.instagram}>Page Instagram</a>
+                    )}
+                    {activity.youtube && activity.youtube.trim() !== "" && (
+                      <a target="_blank" href={activity.youtube}>Chaîne Youtube</a>
                     )}
                     {activity.telegram && activity.telegram.trim() !== "" && (
                       <a target="_blank" href={activity.telegram}>Lien Télégram</a>
